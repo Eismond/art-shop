@@ -937,6 +937,7 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_1__["default"])('.feedback-slider-item', '', '.main-prev-btn', '.main-next-btn');
+  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_1__["default"])('.main-slider-item', 'vertical');
 });
 
 /***/ }),
@@ -1054,8 +1055,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var sliders = function sliders(slideSelector, direction, prev, next) {
-  var slideIndex = 1;
+var sliders = function sliders(slideSelector) {
+  var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'horizontal';
+  var prev = arguments.length > 2 ? arguments[2] : undefined;
+  var next = arguments.length > 3 ? arguments[3] : undefined;
+  var slideIndex = 1,
+      paused = false;
   var items = document.querySelectorAll(slideSelector);
 
   function showSlides(n) {
@@ -1094,6 +1099,29 @@ var sliders = function sliders(slideSelector, direction, prev, next) {
       items[slideIndex - 1].classList.add('slideInLeft');
     });
   } catch (e) {}
+
+  function activateAnimation() {
+    if (direction === 'vertical') {
+      paused = setInterval(function () {
+        changeSlides(1);
+        items[slideIndex - 1].classList.add('slideInDown');
+      }, 3000);
+    } else {
+      paused = setInterval(function () {
+        changeSlides(1);
+        items[slideIndex - 1].classList.remove('slideInRight');
+        items[slideIndex - 1].classList.add('slideInLeft');
+      }, 3000);
+    }
+  }
+
+  activateAnimation();
+  items[0].parentNode.addEventListener('mouseenter', function () {
+    clearInterval(paused);
+  });
+  items[0].parentNode.addEventListener('mouseleave', function () {
+    activateAnimation();
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sliders);

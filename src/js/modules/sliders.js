@@ -1,5 +1,6 @@
-const sliders = (slideSelector, direction, prev, next) => {
-    let slideIndex = 1;
+const sliders = (slideSelector, direction = 'horizontal', prev, next) => {
+    let slideIndex = 1,
+        paused = false;
 
     const items = document.querySelectorAll(slideSelector);
 
@@ -44,6 +45,32 @@ const sliders = (slideSelector, direction, prev, next) => {
     } catch (e) {
 
     }
+
+    function activateAnimation() {
+        if (direction === 'vertical') {
+            paused = setInterval(function () {
+                changeSlides(1);
+                items[slideIndex - 1].classList.add('slideInDown')
+            }, 3000)
+        } else {
+            paused = setInterval(function () {
+                changeSlides(1);
+                items[slideIndex - 1].classList.remove('slideInRight');
+                items[slideIndex - 1].classList.add('slideInLeft')
+            }, 3000)
+        }
+    }
+
+    activateAnimation();
+
+    items[0].parentNode.addEventListener('mouseenter', () => {
+        clearInterval(paused);
+    })
+
+    items[0].parentNode.addEventListener('mouseleave', () => {
+        activateAnimation();
+    })
+
 }
 
 export default sliders;
