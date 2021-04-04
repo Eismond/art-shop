@@ -3695,7 +3695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
 
-
+ // Code isn`t work. Need to debugging
 
 var filter = function filter() {
   var menu = document.querySelector('.portfolio-menu'),

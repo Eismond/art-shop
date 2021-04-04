@@ -1,5 +1,5 @@
 import { type } from "os";
-
+// Code isn`t work. Need to debugging
 const filter = () => {
     const menu = document.querySelector('.portfolio-menu'),
         items = menu.querySelectorAll('li'),
