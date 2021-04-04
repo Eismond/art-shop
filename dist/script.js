@@ -952,6 +952,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var modals = function modals() {
+  var btnPressed = false;
+
   function bindModal(triggerSelector, modalSelector, closeSelector) {
     var closeClickOverlay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
     var destroy = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
@@ -965,12 +967,15 @@ var modals = function modals() {
           e.preventDefault();
         }
 
+        btnPressed = true;
+
         if (destroy) {
           item.remove();
         }
 
         windowWithAttr.forEach(function (item) {
           item.style.display = 'none';
+          item.classList.add('animated', 'fadeIn');
         });
         modal.style.display = 'block'; // document.body.style.overflow = 'hidden';
 
@@ -1014,9 +1019,18 @@ var modals = function modals() {
     }, time);
   }
 
+  function openByScroll(selector) {
+    window.addEventListener('scroll', function () {
+      if (!btnPressed && Math.floor(window.pageYOffset + document.documentElement.clientHeight) + 1 >= document.documentElement.scrollHeight) {
+        document.querySelector(selector).click();
+      }
+    });
+  }
+
   bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
   bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
   bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true, true);
+  openByScroll('.fixed-gift');
   showModalByTime('.popup-consultation', 6000000);
 };
 
