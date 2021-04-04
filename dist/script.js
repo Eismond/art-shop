@@ -954,6 +954,7 @@ __webpack_require__.r(__webpack_exports__);
 var modals = function modals() {
   function bindModal(triggerSelector, modalSelector, closeSelector) {
     var closeClickOverlay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+    var destroy = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
     var trigger = document.querySelectorAll(triggerSelector),
         modal = document.querySelector(modalSelector),
         close = document.querySelector(closeSelector),
@@ -962,6 +963,10 @@ var modals = function modals() {
       item.addEventListener('click', function (e) {
         if (e.target) {
           e.preventDefault();
+        }
+
+        if (destroy) {
+          item.remove();
         }
 
         windowWithAttr.forEach(function (item) {
@@ -1011,7 +1016,8 @@ var modals = function modals() {
 
   bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
   bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
-  showModalByTime('.popup-consultation', 6000);
+  bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true, true);
+  showModalByTime('.popup-consultation', 6000000);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);
