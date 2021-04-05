@@ -10,6 +10,9 @@ const accordion = (triggersSelector, itemsSelector) => {
         btn.addEventListener('click', function () {
             if (!this.classList.contains('active')) {
                 btn.classList.remove('active', 'active-style');
+                btns.forEach((btn) => {
+                    btn.classList.remove('active', 'active-style');
+                });
             }
 
             this.classList.add('active', 'active-style');

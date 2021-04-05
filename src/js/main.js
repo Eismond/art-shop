@@ -3,6 +3,7 @@ import sliders from './modules/sliders';
 import showMore from './modules/showMore';
 import filter from './modules/filter';
 import pictureSize from './modules/pictureSize';
+import accordion from './modules/accordion';
 
 window.addEventListener('DOMContentLoaded', () => {
     modals();
@@ -11,4 +12,5 @@ window.addEventListener('DOMContentLoaded', () => {
     showMore('.button-styles', '#styles .row');
     filter();
     pictureSize('.sizes-block');
+    accordion('.accordion-heading', '.accordion-block');
 });
