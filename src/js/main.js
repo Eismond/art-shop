@@ -2,6 +2,7 @@ import modals from './modules/modals';
 import sliders from './modules/sliders';
 import showMore from './modules/showMore';
 import filter from './modules/filter';
+import pictureSize from './modules/pictureSize';
 
 window.addEventListener('DOMContentLoaded', () => {
     modals();
@@ -9,4 +10,5 @@ window.addEventListener('DOMContentLoaded', () => {
     sliders('.main-slider-item', 'vertical');
     showMore('.button-styles', '#styles .row');
     filter();
+    pictureSize('.sizes-block');
 });

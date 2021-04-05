@@ -46,21 +46,21 @@ const filter = () => {
         typeFilter(markLovers);
     })
 
-    btnChef.addEventListener(() => {
-        typeFilter(markChef);
-    })
+    // btnChef.addEventListener(() => {
+    //     typeFilter(markChef);
+    // })
 
-    btnGirl.addEventListener(() => {
-        typeFilter(markGirl);
-    })
+    // btnGirl.addEventListener(() => {
+    //     typeFilter(markGirl);
+    // })
 
-    btnGuy.addEventListener(() => {
-        typeFilter(markGuy);
-    })
+    // btnGuy.addEventListener(() => {
+    //     typeFilter(markGuy);
+    // })
 
-    btnGrandmother.addEventListener(() => {
-        typeFilter();
-    })
+    // btnGrandmother.addEventListener(() => {
+    //     typeFilter();
+    // })
 
     menu.addEventListener('click', (e) => {
         let target = e.target;
