@@ -3759,28 +3759,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var accordion = function accordion(triggersSelector, itemsSelector) {
   var btns = document.querySelectorAll(triggersSelector),
-      blocks = document.querySelectorAll(itemsSelector);
-  btns.forEach(function (item) {
-    item.addEventListener('click', function () {
-      this.classList.toggle('active-style');
-      this.nextElementSibling.classList.toggle('active-content');
-
-      if (this.classList.contains('active-style')) {} else {}
-    });
-  }); // blocks.forEach(block => {
-  //     block.classList.add('animated', 'fadeInDown');
-  // })
-  // btns.forEach((btn) => {
-  //     btn.addEventListener('click', function () {
-  //         if (!this.classList.contains('active')) {
-  //             btn.classList.remove('active', 'active-style');
-  //             btns.forEach((btn) => {
-  //                 btn.classList.remove('active', 'active-style');
-  //             });
+      blocks = document.querySelectorAll(itemsSelector); // btns.forEach((item) => {
+  //     item.addEventListener('click', function () {
+  //         this.classList.toggle('active-style');
+  //         this.nextElementSibling.classList.toggle('active-content');
+  //         if (this.classList.contains('active-style')) {
+  //         } else {
   //         }
-  //         this.classList.add('active', 'active-style');
   //     })
   // })
+  // blocks.forEach(block => {
+  //     block.classList.add('animated', 'fadeInDown');
+  // })
+
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (!this.classList.contains('active')) {
+        btn.classList.remove('active', 'active-style');
+        btns.forEach(function (btn) {
+          btn.classList.remove('active', 'active-style');
+        });
+      }
+
+      this.classList.add('active', 'active-style');
+    });
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (accordion);
